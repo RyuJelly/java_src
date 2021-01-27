@@ -8,8 +8,6 @@ public class Main {
 	private int hitcount;
 	private Board board[];
 	
-	private Board board;
-	
 	public Main() {
 		Board board = new Board();
 		showBoard();
@@ -52,7 +50,7 @@ public class Main {
 				break;
 			}
 			
-		} while (condition);
+		} while (!menu.equals("q"));
 		
 		
 	}
