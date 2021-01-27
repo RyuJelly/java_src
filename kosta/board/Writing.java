@@ -1,9 +1,12 @@
 package kosta.board;
 
 public class Writing {
+	private int seq;
 	private String title;
 	private String writer;
 	private String contents;
+	private int regdate;
+	private int hitcount;
 	
 	public Writing() {}
 
@@ -12,6 +15,14 @@ public class Writing {
 		this.title = title;
 		this.writer = writer;
 		this.contents = contents;
+	}
+
+	public int getSeq() {
+		return seq;
+	}
+
+	public void setSeq(int seq) {
+		this.seq = seq;
 	}
 
 	public String getTitle() {
@@ -37,6 +48,23 @@ public class Writing {
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
+
+	public int getRegdate() {
+		return regdate;
+	}
+
+	public void setRegdate(int regdate) {
+		this.regdate = regdate;
+	}
+
+	public int getHitcount() {
+		return hitcount;
+	}
+
+	public void setHitcount(int hitcount) {
+		this.hitcount = hitcount;
+	}
+	
 	
 	
 }

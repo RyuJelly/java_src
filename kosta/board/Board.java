@@ -69,7 +69,27 @@ public class Board {
 	}
 	
 	public void newWriting(String title, String writer, String contents) {
-		
+		writing[seq++] = new Writing(title, writer, contents);
+	}
+
+	public Writing[] getAll() {
+//		System.out.printf("글번호: %d\t글제목: %s\t작성자: %s\t작성일자: %s\t조회수: %d%n", writing[i].getSeq(), writing[i].getTitle(), writing[i].getRegdate(), writing[i].getHitcount());
+		Writing newWriting[] = new Writing[seq];
+		System.arraycopy(writing, 0, newWriting, 0, seq);
+		return newWriting;
+	}
+
+	public Writing showBorad() {
+		Writing wr = null;
+		System.out.print("조회할 글번호: ");
+		int sNum = Sc.sc.nextInt();
+		for (int i = 0; i < seq; i++) {
+			if (sNum == writing[i].getSeq()){
+				wr = writing[i];
+				break;
+			}
+		}
+		return wr;
 	}
 
 }
