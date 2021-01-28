@@ -16,6 +16,16 @@ public class GeneralMember {
 		this.address = address;
 	}
 	
+	public void printMember() {
+		System.out.println("회원아이디: " + id);
+		System.out.println("회원의 이름: " + name);
+		System.out.println("회원의 주소: " + address);
+		System.out.println("회원이 대여한 비디오 번호: " + rentalVideo.getNo());
+		System.out.println("회원이 대여한 비디오 제목: " + rentalVideo.getTitle());
+		System.out.println("회원이 대여한 비디오 주인공: " + rentalVideo.getActor());
+		System.out.println();
+	}
+	
 	public void rentalService(Video video) {
 		this.rentalVideo = video;
 	}
