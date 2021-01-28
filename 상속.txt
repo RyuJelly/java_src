@@ -1,8 +1,8 @@
 1. 상속에 대한 기본 개념
 상속, 인터페이스
 	-> 오브젝트 형변환
-	->오버라이딩
-	-> 자바의 다형성
+	-> 오버라이딩
+	-> 자바의 다형성 (상속, 오버라이딩, 형변환)
 
 this => 현재 자기자신의 객체를 가르키는 것
 this() => 자신의 생성자에서 다른 생성자를 호출하는 기능
@@ -18,4 +18,22 @@ ex) 아 + ㅣ = 애
 	class CheckAccount	extends	Account
 	새로 생성할클래스(자식)		상속할클래스(부모)
 
-2. 
+2. 오버라이딩
+
+3. 오브젝트 형변환(자식데이터형(type) => 부모데이터형)
+
+Account account = new CheckingAccount();
+생성된 데이터 => CheckingAccount
+데이터타입 => Account
+
+=> CheckingAccount account = new CheckingAccount();
+     Account account2 = account;
+
+4. 자바의 다형성
+	상속 -> 오버라이딩 -> 형변환
+	=> 형변환시 오버라이딩 되지 않은 자식클래스만 가진 메서드는 호출이 불가능하다.
+
+	자식클래스 obj = (자식클래스) 부모변수; // 강제형변환
+	obj.자신만의 메서드() => 호출가능
+
+	obj instanceof 변환할클래스 => true, false

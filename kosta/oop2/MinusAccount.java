@@ -20,6 +20,14 @@ public class MinusAccount extends Account {
 		
 		return amount;
 	}
+
+	@Override
+	public void print() {
+		super.print();
+		if (getBalance() < 0) {
+			System.out.println("남은 마이너스 한도: " + (creditLine + getBalance()));
+		}
+	}
 	
 	
 	

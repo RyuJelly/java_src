@@ -9,11 +9,16 @@ public class SpecialMember extends GeneralMember {
 		super(id, name, address);
 		this.bonus = bonus;
 	}
+	
 
-	public void bonusPrint() {
+	@Override
+	public void printMember() {
+		super.printMember();
 		System.out.println("회원의 보너스 포인터 적립 : " + bonus);
 	}
 	
-	
+	public void bonusPrint() {
+		System.out.println("보너스 포인터 : " + bonus);
+	}
 	
 }
