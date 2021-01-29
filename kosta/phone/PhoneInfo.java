@@ -1,22 +1,12 @@
 package kosta.phone;
 
 public class PhoneInfo {
-	// 멤버 변수 선언
-	// 멤버 메서드 정의
+	//멤버 변수 선언
 	private String name;
-//	int phoneNo;
-//	int birth;
 	private String phoneNo;
 	private String birth;
-
+	
 	public PhoneInfo() {}
-
-//	public PhoneInfo(String name, int phoneNo, int birth) {
-//		super();
-//		this.name = name;
-//		this.phoneNo = phoneNo;
-//		this.birth = birth;
-//	}
 
 	public PhoneInfo(String name, String phoneNo, String birth) {
 		super();
@@ -25,8 +15,12 @@ public class PhoneInfo {
 		this.birth = birth;
 	}
 	
+	//멤버 메서드 정의
+	//1명의 전화내역 출력하기
 	public void show() {
-		System.out.println("이름: " + name + " 전화번호: " + phoneNo + " 생년월일: " + birth);
+		System.out.println("이름 : " + name);
+		System.out.println("전화번호 : " + phoneNo);
+		System.out.println("생년월일: " + birth);
 	}
 
 	public String getName() {
@@ -55,3 +49,16 @@ public class PhoneInfo {
 	
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

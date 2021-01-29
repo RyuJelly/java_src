@@ -3,99 +3,143 @@ package kosta.phone;
 //import java.util.Scanner;
 
 public class Manager {
-
-   PhoneInfo arr[];
-   int index = 0;
-   String sName;
-   String snum;
-   
-   public Manager() {
-      arr = new PhoneInfo[10];
-   }
-
-   public void addPhoneInfo() throws Exception {
-      // 이름, 전화번호, 생년월일 (키보드입력)
-      // PhoneInfo객체 생성 => 배열에 추가
-      System.out.print("이름: ");
-      String name = DataInput.sc.nextLine();
-//      sc.nextInt();
-      System.out.print("전화번호: ");
-      String phoneNo = DataInput.sc.nextLine();      
-      System.out.print("생년월일: ");
-      String birth = DataInput.sc.nextLine();      
-      
-      if (phoneNo == null || phoneNo.length() ==0) {
-    	  throw new Exception("반드시 전화번호 입력하세요.");
-      }
-      
-//      PhoneInfo person = new PhoneInfo(name, phoneNo, birth);
-//      arr[index++] = person;
-      arr[index++] = new PhoneInfo(name, phoneNo, birth);
-      
-   }
-   
-   public void listPhoneInfo() {
-      // 배열에 있는 PhoneInfo객체 모두를 출력
-      for (int i = 0; i < index; i++) {
-         arr[i].show();
-      }
-   }
-   
-   public void searchPhoneInfo() {
-      // 키보드로부터 이름을 입력받아 해당 PhoneInfo객체만 출력
-      System.out.print("검색할 이름: ");
-      sName = DataInput.sc.nextLine();
-      int idx = -1;
-      
-      for (int i = 0; i < index; i++) {
-         if (arr[i].getName().equals(sName)) {
-            arr[i].show();
-            idx = i;
-            break;
-         }
-      }
-      if (idx == -1) {   
-         System.out.println("찾지 못했습니다.");
-      }
-      
-   }
-   
-   public void updatePhoneInfo() {
-      System.out.print("전화번호: ");
-      snum = DataInput.sc.nextLine();
-      int idx = -1;
-      for (int i =0; i < index; i++) {
-         if (snum.equals(arr[i].getPhoneNo())) {
-            System.out.print("수정할 번호 입력: ");
-            arr[i].setPhoneNo(DataInput.sc.nextLine());
-            idx = i;
-         }
-      }
-      if (idx == -1) {
-         System.out.println("해당 번호를 찾을수 없습니다.");
-      }
-   }
-   
-   public void deletePhoneInfo(){
-      System.out.print("삭제할 이름: ");
-      sName = DataInput.sc.nextLine();
-      int idx = -1;
-      for (int i=0; i <index; i++) {
-         if (arr[i].getName().equals(sName)) {
-            for (int j = i; j < index; j++) {
-            	if (j != arr.length) {
-            		arr[j] = arr[j+1];
-            	}else {
-            		arr[index] = null;
-            	}  
-            }
-            index--;
-            idx = i;
-            break;
-         }
-      }
-      if (idx == -1) {
-    	  System.out.println("찾을수 없습니다.");
-      }
-   }
+	PhoneInfo[] arr;
+	int count;
+	
+	public Manager() {
+		arr = new PhoneInfo[10];
+	}
+	
+	public void addPhoneInfo() {
+		//이름, 전화번호, 생년월일 입력
+		//PhoneInfo객체 생성 => 배열에 추가
+		// 1.전체 2. 동창 3. 직장
+		System.out.println("1.전체 2. 동창 3. 직장");
+		System.out.print("선택 : ");
+		String menu = DataInput.sc.nextLine();
+		System.out.print("이름: ");
+		String name = DataInput.sc.nextLine();
+		System.out.print("전화번호: ");
+		String phoneNo = DataInput.sc.nextLine();
+		System.out.print("생년월일: ");
+		String birth = DataInput.sc.nextLine();
+		if (menu.equals("1")) {
+			arr[count++] = new PhoneInfo(name, phoneNo, birth);
+		}else if (menu.equals("2")) {
+			System.out.print("전공: ");
+			String major = DataInput.sc.nextLine();
+			System.out.print("학번: ");
+			String year = DataInput.sc.nextLine();
+			arr[count++] = new University(name, phoneNo, birth, major, year);
+		}else if (menu.equals("3")) {
+			System.out.print("부서: ");
+			String dept = DataInput.sc.nextLine();
+			System.out.print("직책: ");
+			String position = DataInput.sc.nextLine();
+			arr[count++] = new Company(name, phoneNo, birth, dept, position);
+		}
+		
+				
+	}
+	
+	public void listPhoneInfo() {
+		//배열에 있는 PhoneInfo객체 모두를 출력
+		// 1.전체 2. 동창 3. 직장
+		System.out.println("1.전체 2. 동창 3. 직장");
+		System.out.print("선택 : ");
+		String menu = DataInput.sc.nextLine();
+		for(int i=0;i<count;i++) {
+			if (menu.equals("1")) {
+				arr[i].show();
+			}else if (menu.equals("2")) {
+				if (arr[i] instanceof University) {
+					arr[i].show();
+				}
+			}else if (menu.equals("3")) {
+				if (arr[i] instanceof Company) {
+					arr[i].show();
+				}
+			}
+		}
+	}
+	
+	public void searchPhoneInfo() {
+		//키보드로 부터 이름 입력 받아
+		//해당 PhoneInfo객체만 출력
+		System.out.print("이름: ");
+		String name = DataInput.sc.nextLine();
+		int idx = -1;
+		
+		for(int i=0;i<count;i++) {
+			PhoneInfo info = arr[i];
+			if(name.equals(info.getName())) {
+				info.show();
+				idx = i;
+				break;
+			}
+		}
+		
+		if(idx == -1) {
+			System.out.println("찾을 수 없습니다.");
+		}		
+	}
+	
+	public void updatePhoneInfo() {
+		System.out.print("이름: ");
+		String name = DataInput.sc.nextLine();
+		int idx = -1;
+		
+		for(int i=0;i<count;i++) {
+			PhoneInfo info = arr[i];
+			if(name.equals(info.getName())) {
+				System.out.print("수정 전화번호 입력: ");
+				String phoneNo = DataInput.sc.nextLine();
+				info.setPhoneNo(phoneNo);
+				idx = i;
+				break;
+			}
+		}
+		
+		if(idx == -1) {
+			System.out.println("찾을 수 없습니다.");
+		}		
+	}
+	
+	public void deletePhoneInfo() {
+		System.out.print("이름: ");
+		String name = DataInput.sc.nextLine();
+		int idx = -1;
+		
+		for(int i=0;i<count;i++) {
+			PhoneInfo info = arr[i];
+			if(name.equals(info.getName())){
+				idx = i;
+				break;
+			}
+		}
+		
+		if(idx != -1) {
+			for(int i=idx;i<count;i++) {
+				arr[i] = arr[i+1];
+			}
+			
+			arr[count-1] = null;
+			count--;
+			
+		}else {
+			System.out.println("찾을 수 없습니다.");
+		}		
+	}	
 }
+
+
+
+
+
+
+
+
+
+
+
+
