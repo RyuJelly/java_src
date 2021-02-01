@@ -38,4 +38,18 @@ public class Account {
 		System.out.println("계좌주 : " + ownerName);
 		System.out.println("잔액 : " + balance);
 	}
+	@Override
+	public String toString() {
+		return "Account [accountNo=" + accountNo + ", ownerName=" + ownerName + ", balance=" + balance + "]";
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (accountNo.equals(((Account)obj).accountNo)) {
+			return true;
+		}
+		return false;
+	}
+	
+	
 }
