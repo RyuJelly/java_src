@@ -1,14 +1,16 @@
 package kosta.phone;
 
+import java.util.LinkedList;
+
 //import java.util.Scanner;
 
 public class Manager {
-	PhoneInfo[] arr;
-	int count;
+	LinkedList<PhoneInfo> arr = new LinkedList<PhoneInfo>();
 	
 	public Manager() {
-		arr = new PhoneInfo[10];
+		LinkedList<PhoneInfo> arr = new LinkedList<PhoneInfo>();
 	}
+
 	
 	public void addPhoneInfo() {
 		//이름, 전화번호, 생년월일 입력
@@ -24,21 +26,20 @@ public class Manager {
 		System.out.print("생년월일: ");
 		String birth = DataInput.sc.nextLine();
 		if (menu.equals("1")) {
-			arr[count++] = new PhoneInfo(name, phoneNo, birth);
+			arr.add(new PhoneInfo(name, phoneNo, birth));
 		}else if (menu.equals("2")) {
 			System.out.print("전공: ");
 			String major = DataInput.sc.nextLine();
 			System.out.print("학번: ");
 			String year = DataInput.sc.nextLine();
-			arr[count++] = new University(name, phoneNo, birth, major, year);
+			arr.add(new University(name, phoneNo, birth, major, year));
 		}else if (menu.equals("3")) {
 			System.out.print("부서: ");
 			String dept = DataInput.sc.nextLine();
 			System.out.print("직책: ");
 			String position = DataInput.sc.nextLine();
-			arr[count++] = new Company(name, phoneNo, birth, dept, position);
+			arr.add(new Company(name, phoneNo, birth, dept, position));
 		}
-		
 				
 	}
 	
@@ -48,16 +49,16 @@ public class Manager {
 		System.out.println("1.전체 2. 동창 3. 직장");
 		System.out.print("선택 : ");
 		String menu = DataInput.sc.nextLine();
-		for(int i=0;i<count;i++) {
+		for(int i=0;i<arr.size();i++) {
 			if (menu.equals("1")) {
-				arr[i].show();
+				arr.get(i).show();
 			}else if (menu.equals("2")) {
-				if (arr[i] instanceof University) {
-					arr[i].show();
+				if (arr.get(i) instanceof University) {
+					arr.get(i).show();
 				}
 			}else if (menu.equals("3")) {
-				if (arr[i] instanceof Company) {
-					arr[i].show();
+				if (arr.get(i) instanceof Company) {
+					arr.get(i).show();
 				}
 			}
 		}
@@ -70,15 +71,14 @@ public class Manager {
 		String name = DataInput.sc.nextLine();
 		int idx = -1;
 		
-		for(int i=0;i<count;i++) {
-			PhoneInfo info = arr[i];
+		for(int i=0;i<arr.size();i++) {
+			PhoneInfo info = arr.get(i);
 			if(name.equals(info.getName())) {
 				info.show();
 				idx = i;
 				break;
 			}
 		}
-		
 		if(idx == -1) {
 			System.out.println("찾을 수 없습니다.");
 		}		
@@ -89,8 +89,8 @@ public class Manager {
 		String name = DataInput.sc.nextLine();
 		int idx = -1;
 		
-		for(int i=0;i<count;i++) {
-			PhoneInfo info = arr[i];
+		for(int i=0;i<arr.size();i++) {
+			PhoneInfo info = arr.get(i);
 			if(name.equals(info.getName())) {
 				System.out.print("수정 전화번호 입력: ");
 				String phoneNo = DataInput.sc.nextLine();
@@ -110,8 +110,8 @@ public class Manager {
 		String name = DataInput.sc.nextLine();
 		int idx = -1;
 		
-		for(int i=0;i<count;i++) {
-			PhoneInfo info = arr[i];
+		for(int i=0;i<arr.size();i++) {
+			PhoneInfo info = arr.get(i);
 			if(name.equals(info.getName())){
 				idx = i;
 				break;
@@ -119,12 +119,7 @@ public class Manager {
 		}
 		
 		if(idx != -1) {
-			for(int i=idx;i<count;i++) {
-				arr[i] = arr[i+1];
-			}
-			
-			arr[count-1] = null;
-			count--;
+			arr.remove(idx);
 			
 		}else {
 			System.out.println("찾을 수 없습니다.");

@@ -18,7 +18,7 @@ public class PhoneInfo {
 	//멤버 메서드 정의
 	//1명의 전화내역 출력하기
 	public void show() {
-		System.out.println("이름 : " + name);
+		System.out.println("이름 : " + getName());
 		System.out.println("전화번호 : " + phoneNo);
 		System.out.println("생년월일: " + birth);
 	}
