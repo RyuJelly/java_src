@@ -1,5 +1,10 @@
 package kosta.phone;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.LinkedList;
 
 //import java.util.Scanner;
@@ -124,7 +129,43 @@ public class Manager {
 		}else {
 			System.out.println("찾을 수 없습니다.");
 		}		
-	}	
+	}
+	
+	public void write() {
+		ObjectOutputStream oos = null;
+		
+		try {
+			oos = new ObjectOutputStream(new FileOutputStream("phoneInfo.ser"));
+			oos.writeObject(arr);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				oos.close();
+			} catch (Exception e2) {}
+		}
+	}
+	
+	public void read() {
+		ObjectInputStream ois = null;
+		
+		try {
+			ois = new ObjectInputStream(new FileInputStream("phoneInfo.ser"));
+			arr = (LinkedList<PhoneInfo>)ois.readObject();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				ois.close();
+			} catch (Exception e2) {}
+		}
+	}
+	
+	
+	
+	
 }
 
 

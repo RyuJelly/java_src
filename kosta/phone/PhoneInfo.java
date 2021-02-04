@@ -1,6 +1,8 @@
 package kosta.phone;
 
-public class PhoneInfo {
+import java.io.Serializable;
+
+public class PhoneInfo implements Serializable{
 	//멤버 변수 선언
 	private String name;
 	private String phoneNo;
