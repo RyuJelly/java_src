@@ -1,0 +1,21 @@
+DigitThread => run() { 멀티 스레드의 내용 }
+
+Thread t = new DigitThread();
+t.run() : x  => t.start() : o
+
+	thread 생성 => Runnable : 스레드가 사용 가능한 상태
+		    => Not Runnable : 스레드가 사용 불가능한 상태
+		    => sleep(), join(), wait(), notify() 
+
+스레드
+1. 프로세스 vs 스레드 차이점
+
+2. 멀티스레드를 사용하는 이유
+
+3. 멀티스레드를 구현하는 방법(2개)
+
+4. 스레드 구동방식 방식에서 Runnable vs Not Runnable 원리를 이해
+
+5. 스레드 구현 가운데 critical section 발생 => 동기화(블록, 메서드)
+
+6. 스레드간에 커뮤니케이션 (wait, notify)
