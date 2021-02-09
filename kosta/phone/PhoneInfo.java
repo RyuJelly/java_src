@@ -48,6 +48,11 @@ public class PhoneInfo implements Serializable{
 	public void setBirth(String birth) {
 		this.birth = birth;
 	}
+
+	@Override
+	public String toString() {
+		return "PhoneInfo [name=" + name + ", phoneNo=" + phoneNo + ", birth=" + birth + "]";
+	}
 	
 	
 }

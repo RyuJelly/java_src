@@ -1,0 +1,36 @@
+자바프로그램
+  -> 입출력
+  -> JDBC(DB연결)
+  -> 네트워크 - TCP/IP (소켓) => 입출력, Thread, List
+
+멀티 다중 채팅(채팅방)
+
+ServerSocket <- ClientSocket
+ ->Socket
+
+클라이언트 <-----------> 서버
+  -> 이기종간의 데이터 형식
+  -> XML, JSON => AJAX
+
+	1. 데이터량 감소
+	2. JSON => 객체
+ [
+    {
+	"name" : "홍길동",
+	"age" : 20,
+	"address" : "서울시"
+    },
+    {
+	"name" : "홍길동",
+	"age" : 20,
+	"address" : "서울시"
+    }
+ ]
+
+8. 서버에저장
+List => Json 문자열 => Socket 이용 => 문자열 전달
+	=> List 변환
+
+9. 서버에서 불러오기
+List => Json 문자열 => List객체 변환
+
