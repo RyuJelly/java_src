@@ -1,0 +1,39 @@
+oracle설치후 > cmd창 
+> sqlplus/nolog > conn sys as sysdba >비밀번호입력
+
+*user(계정) 생성
+> create user kosta211 identified by 1234;
+> grant connect, resource, dba to kosta211;
+
+* oracle_exam2.sql 불러오기
+sql파일 로드하기 => @파일경로
+> @E:\oracle_exam2.sql
+> commit;
+
+* hr계정 unlock
+> conn /as sysdba
+> alter user hr identified by hr account unlock;
+> conn hr/hr
+(select * from tab;) <- 테이블목록출력
+
+* Scott계정 불러오기
+> conn system/1234
+처음설치한 oracle경로
+@C:\oraclexe\app\oracle\product\11.2.0\server\rdbms\admin\scott.sql
+> alter user scott identified by tiger;
+> conn scott/tiger
+(select * from tab;) <- 테이블목록출력
+
+
+------------------------------------------------------------
+sqldeveloper
+(C:\Program Files\Java\jdk1.8.0_45) jdk경로
+
+------------------------------------------------------------
+tomcat 설치후
+eclipse 실행 -> JavaEE
+server runtime envi > add > Apache Tomcat v9.0 > browse (폴더선택) > finish
+console창에 severs 우클릭 new sever finish
+
+
+
